@@ -1,15 +1,15 @@
 import React from 'react';
 import { Card, Row, Col} from 'react-bootstrap';
-import './RecentAnime.css';
+import './RecentlyUpdated.css';
 
-const RecentAnime = () => {
+const RecentlyUpdated = () => {
 
   return (
-    <div className="recent-anime">
+    <div className="recently-updated">
 
         <h1>Recently Updated</h1>
 
-        <div className="recent-anime-list">
+        <div className="recently-updated-list">
           <Row>
           {Array.from({ length: 18 }).map((_, idx) => (
             <Col sm={2}>
@@ -35,4 +35,4 @@ const RecentAnime = () => {
   );
 };
 
-export default RecentAnime;
+export default RecentlyUpdated;
