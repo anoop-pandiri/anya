@@ -1,5 +1,6 @@
 .recently-updated{
-    height: 100%;
+    min-height: 100vh;
+    height: auto;
     color: white;
     font-family: 'Roboto', sans-serif;
     
@@ -9,6 +10,7 @@
     font-size: 2rem;
     text-align: left;
     margin-bottom: 20px;
+    padding-top: 10px;
   }
     
   .recently-updated-list .card{

@@ -15,8 +15,8 @@ const mystyle = {
 const Header = () => {
   return (
     <div>
-      <nav class="navbar" style={mystyle}>
-      <div class="navitem"><a href="#home"><img src={"./images/Anya.png"} alt="Anya" width="50" height="55"/></a></div>
+      <nav className="navbar" style={mystyle}>
+      <div className="navitem"><a href="#home"><img src={"./images/Anya.png"} alt="Anya" width="50" height="55"/></a></div>
       </nav>
     </div>
   );

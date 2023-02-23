@@ -4,7 +4,29 @@ import './RecentlyUpdated.css';
 
 const RecentlyUpdated = () => {
 
-  const [recentAnime, setRecentAnime] = useState([{}]);
+  const [recentAnime, setRecentAnime] = useState([
+    {"isSimulcast":true,
+    "isSubbed":true,
+    "isDubbed":true,
+    "year":2023,
+    "slug":"",
+    "episodeNumber":0,
+    "title":"",
+    "poster":{"sm":{"name":"anime-sm",
+                    "formats":["jpeg","webp"],
+                    "width":480,
+                    "height":720
+                    },
+              "hq":{"name":"anime-hq",
+                    "formats":["jpeg","webp"],
+                    "width":1024,
+                    "height":1536
+                    }
+            },
+    "lastUpdate":"2023-02-22T21:03:07.000Z",
+    "updatedString":""
+    }
+  ]);
   var link = 'https://www2.kickassanime.ro/api/recent_update?episodeType=all&page=0&perPage=18';
 
   useEffect(() => {
@@ -17,11 +39,7 @@ const RecentlyUpdated = () => {
     .then(data => {
       var finalData = JSON.parse(data.contents);
       setRecentAnime(finalData);
-     
     });
-    
-    console.log(recentAnime[0].poster.hq.name);
-    
 
   }, []);
 
@@ -40,12 +58,12 @@ const RecentlyUpdated = () => {
                 <Card.Body style={{padding:"0.5em"}}>
                   <Card.Title>{anime.title}</Card.Title>
                   <Card.Text>
-                  <div>
-                    Episode {anime.episodeNumber}
-                  </div>
-                  <div>
+                  <span>
+                    {anime.episodeNumber==0?"":"Episode" + anime.episodeNumber}
+                  </span>
+                  <span>
                     {anime.updatedString}
-                  </div>
+                  </span>
                   </Card.Text>
                 </Card.Body>
               </Card>
