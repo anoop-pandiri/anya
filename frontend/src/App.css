@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+.container-fluid{
+  background: #1A1A1D;
+  height: 100%;
+}

@@ -1,0 +1,35 @@
+.recent-anime{
+    height: 100%;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+  
+  .recent-anime h1{
+    font-size: 2rem;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+    
+  .recent-anime-list .card{
+    background: #1A1A1D;
+    color: white;
+    border: solid transparent;
+    transition: 0.3s;
+  }
+  
+  .recent-anime-list .card:hover{
+    background: #2B2B2F;
+    border: solid #2B2B2F;
+  }
+
+  .card-text{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .card-title{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  white-space: nowrap;
+  }
