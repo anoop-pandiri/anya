@@ -1,8 +1,29 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import { Card, Row, Col} from 'react-bootstrap';
 import './RecentAnime.css';
 
 const RecentAnime = () => {
+
+  const [recentAnime, setRecentAnime] = useState([{}]);
+  var link = 'https://www2.kickassanime.ro/api/recent_update?episodeType=all&page=0&perPage=18';
+
+  useEffect(() => {
+    
+    fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(link)}`)
+    .then(response => {
+	   if (response.ok) return response.json()
+	    throw new Error('Network response was not ok.')
+    })
+    .then(data => {
+      var finalData = JSON.parse(data.contents);
+      setRecentAnime(finalData);
+     
+    });
+    
+    console.log(recentAnime[0].poster.hq.name);
+    
+
+  }, []);
 
   return (
     <div className="recent-anime">
@@ -11,18 +32,19 @@ const RecentAnime = () => {
 
         <div className="recent-anime-list">
           <Row>
-          {Array.from({ length: 18 }).map((_, idx) => (
-            <Col sm={2}>
+          
+          {recentAnime.map((anime, idx) => (
+            <Col sm={2} key={idx}>
               <Card>
-                <Card.Img variant="top" src="./images/anya-poster.png" />
+                <Card.Img variant="top" src={`https://www2.kickassanime.ro/images/poster/${anime.poster.hq.name}.${anime.poster.hq.formats[1]}`} />
                 <Card.Body style={{padding:"0.5em"}}>
-                  <Card.Title>Anime</Card.Title>
+                  <Card.Title>{anime.title}</Card.Title>
                   <Card.Text>
                   <div>
-                    Episode x
+                    Episode {anime.episodeNumber}
                   </div>
                   <div>
-                    x Hours ago
+                    {anime.updatedString}
                   </div>
                   </Card.Text>
                 </Card.Body>
