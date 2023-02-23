@@ -1,10 +1,10 @@
 import './App.css';
-import Home from './Pages/Home/Home';
+import RecentlyUpdated from 'Content/RecentlyUpdated/RecentlyUpdated';
 
 function App() {
   return (
     <div className="container-fluid">
-      <Home/>
+      <RecentlyUpdated/>
     </div>
   );
 }

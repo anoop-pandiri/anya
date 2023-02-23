@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  
+    
 }
 
 .App-logo {
@@ -40,13 +40,9 @@
 
 /****************************** Custom CSS ***********************************/
 
-body {
-  background-color: #282c34;
-  color: white;
-  font-family: Arial;
-}
-
 .container-fluid{
   background: #1A1A1D;
   height: 100%;
+  min-height: 100vh;
+  height: auto;   
 }
