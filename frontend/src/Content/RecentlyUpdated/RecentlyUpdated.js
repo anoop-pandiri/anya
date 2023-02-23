@@ -52,14 +52,14 @@ const RecentlyUpdated = () => {
           <Row>
           
           {recentAnime.map((anime, idx) => (
-            <Col sm={2} key={idx}>
+            <Col xs={6} sm={4} md={3} lg={2} key={idx}>
               <Card>
                 <Card.Img variant="top" src={`https://www2.kickassanime.ro/images/poster/${anime.poster.hq.name}.${anime.poster.hq.formats[1]}`} />
                 <Card.Body style={{padding:"0.5em"}}>
                   <Card.Title>{anime.title}</Card.Title>
                   <Card.Text>
                   <span>
-                    {anime.episodeNumber==0?"":"Episode" + anime.episodeNumber}
+                    {anime.episodeNumber==0?"":"Episode " + anime.episodeNumber}
                   </span>
                   <span>
                     {anime.updatedString}
