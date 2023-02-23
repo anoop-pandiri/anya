@@ -31,6 +31,11 @@
   .card-text{
     display: flex;
     justify-content: space-between;
+    flex-flow: row wrap;
+  }
+
+  .card-text>span:nth-child(1){
+    padding: 0 10px 0 0;
   }
 
   .card-title{

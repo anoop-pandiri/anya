@@ -13,11 +13,13 @@ document.title="ANYA";
 
 root.render(
   <React.StrictMode>
-    <div id='index'>
-      <Header/>
-      <App />
-      <Footer/>
-    </div>
+    
+      <div id='index'>
+        <Header/>
+        <App />
+        <Footer/>
+      </div>
+    
   </React.StrictMode>
 );
 
