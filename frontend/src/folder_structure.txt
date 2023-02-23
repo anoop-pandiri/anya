@@ -1,0 +1,8 @@
+1. Assets - website logo
+2. Components - custom button, input etc
+3. Sections - Header, Footer, Sidebar etc
+4. Pages - Home, Anime, Episode
+5. Content (Custom Sections) - Caraousel, Recent Updates, Trending etc
+6. Utils - Date formatting, String Conversion etc
+7. Services - manage API integrations
+8. Store (If using Redux) - actions and reducers subfolder to manage redux states

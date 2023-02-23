@@ -1,10 +1,10 @@
 import './App.css';
-import RecentAnime from './Components/RecentAnime/RecentAnime';
+import Home from './Pages/Home/Home';
 
 function App() {
   return (
     <div className="container-fluid">
-      <RecentAnime />
+      <Home/>
     </div>
   );
 }

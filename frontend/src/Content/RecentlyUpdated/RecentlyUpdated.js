@@ -1,8 +1,8 @@
 import React, {useState,useEffect} from 'react';
 import { Card, Row, Col} from 'react-bootstrap';
-import './RecentAnime.css';
+import './RecentlyUpdated.css';
 
-const RecentAnime = () => {
+const RecentlyUpdated = () => {
 
   const [recentAnime, setRecentAnime] = useState([{}]);
   var link = 'https://www2.kickassanime.ro/api/recent_update?episodeType=all&page=0&perPage=18';
@@ -26,11 +26,11 @@ const RecentAnime = () => {
   }, []);
 
   return (
-    <div className="recent-anime">
+    <div className="recently-updated">
 
         <h1>Recently Updated</h1>
 
-        <div className="recent-anime-list">
+        <div className="recently-updated-list">
           <Row>
           
           {recentAnime.map((anime, idx) => (
@@ -57,4 +57,4 @@ const RecentAnime = () => {
   );
 };
 
-export default RecentAnime;
+export default RecentlyUpdated;
