@@ -1,6 +1,60 @@
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import './EpisodeView.css';
 
-function EpisodeView() {
+function EpisodeView({anime}) {
+
+    let location = useLocation();;
+    let animeWatchLink = `https://www2.kickassanime.ro/api/watch/${location.state.slug}`;
+   
+    const [animeWatch, setAnimeWatch] = useState([
+      {"anime_id":"",
+      "name":"",
+      "title":"",
+      "description":"",
+      "seasonId":"",
+      "seasonNumber":0,
+      "episodeNumber":0,
+      "banner":{"sm":{"name":"anime-sm","formats":["jpeg","webp"],"width":853,"height":480},
+                "hq":{"name":"anime-hq","formats":["jpeg","webp"],"width":1820,"height":1024}
+              },
+      "poster":{"sm":{"name":"anime-sm","formats":["jpeg","webp"],"width":480,"height":720},
+                "hq":{"name":"anime-hq","formats":["jpeg","webp"],"width":1024,"height":1536}
+              },
+      "thumbnail":{"sm":{"name":"anime-sm","formats":["jpeg","webp"],"width":853,"height":480},
+                    "hq":{"name":"anime-hq","formats":["jpeg","webp"],"width":1820,"height":1024}
+                  },
+      "lang":"",
+      "genres":[""],
+      "year":0,
+      "maturityRatings":[""],
+      "isDubbed":false,
+      "isSubbed":false,
+      "isMature":false,
+      "duration":"00:00",
+      "slug":"",
+      "premiered":"",
+      "episodeNavigation":{"prev":"","next":""},
+      "servers":[""]
+      }
+    ]);
+
+    
+    useEffect(() => {
+      fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(animeWatchLink)}&nocache=${Date.now()}`)
+      .then(response => {
+       if (response.ok) {
+        return response.json()
+      }
+        throw new Error('Network response was not ok.')
+      })
+      .then(data => {
+        var finalData = JSON.parse(data.contents);
+        setAnimeWatch(finalData);
+      });
+  
+    }, []);
+
   
     function ambientMode() {
       var btn = document.getElementById("btnAmbient");
@@ -35,7 +89,7 @@ function EpisodeView() {
             <div className='video-container'>
             <canvas id="canvas"></canvas>
                 {/* <video id="player" width="400" height="200" controls src=""> Browser not supported </video> */}
-                <iframe id='player' title="episode" allowFullScreen src="https://kaast1.com/sapphire-duck/player.php?src=MWJkODExMTJkZGI3OTRlY2I5MDgwYjVkYmY0ZWRmNzI6MDFmMDY1ODM5NWI4NDkyYzgwYmI5NmMzNTZlYTVmNWVkZTJhNzNjNGY2ZmIzZTMwNDkzOGRjMTdkZjBiNDQxZmM1MGY0MzZiNWU3YmM4ODdmMGJhNTA0ZmVmM2U4MTc0" ></iframe>
+                <iframe id='player' title="episode" allowFullScreen src={animeWatch.name!==""?animeWatch.servers:""} ></iframe>
                 {/* width="864" height="486" */}
             </div>
         </div>
@@ -44,8 +98,8 @@ function EpisodeView() {
         </div>
 
         <div className='title-container'>
-        <h2>SPY x FAMILY</h2>
-        <h5>Episode 1 - OPERATION STRIX (MISSION: 1)</h5>
+        <h2>{animeWatch.title}</h2>
+        <h5>Episode {animeWatch.episodeNumber} - {animeWatch.name}</h5>
                 
         </div>
         <div className='metadata-container'>
