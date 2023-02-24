@@ -4,6 +4,7 @@ function AnimeDetails() {
     return (
         <div className="anime-details">
             Anime Details Page
+            
         </div>
     );
   };

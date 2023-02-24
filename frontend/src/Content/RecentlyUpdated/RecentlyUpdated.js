@@ -8,7 +8,7 @@ const RecentlyUpdated = () => {
     {"isSimulcast":true,
     "isSubbed":true,
     "isDubbed":true,
-    "year":2022,
+    "year":2023,
     "slug":"",
     "episodeNumber":0,
     "title":"",

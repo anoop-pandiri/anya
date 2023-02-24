@@ -35,7 +35,7 @@ function EpisodeView() {
             <div className='video-container'>
             <canvas id="canvas"></canvas>
                 {/* <video id="player" width="400" height="200" controls src=""> Browser not supported </video> */}
-                <iframe id='player' title="episode" src="https://kaast1.com/sapphire-duck/player.php?src=MWJkODExMTJkZGI3OTRlY2I5MDgwYjVkYmY0ZWRmNzI6MDFmMDY1ODM5NWI4NDkyYzgwYmI5NmMzNTZlYTVmNWVkZTJhNzNjNGY2ZmIzZTMwNDkzOGRjMTdkZjBiNDQxZmM1MGY0MzZiNWU3YmM4ODdmMGJhNTA0ZmVmM2U4MTc0" ></iframe>
+                <iframe id='player' title="episode" allowFullScreen src="https://kaast1.com/sapphire-duck/player.php?src=MWJkODExMTJkZGI3OTRlY2I5MDgwYjVkYmY0ZWRmNzI6MDFmMDY1ODM5NWI4NDkyYzgwYmI5NmMzNTZlYTVmNWVkZTJhNzNjNGY2ZmIzZTMwNDkzOGRjMTdkZjBiNDQxZmM1MGY0MzZiNWU3YmM4ODdmMGJhNTA0ZmVmM2U4MTc0" ></iframe>
                 {/* width="864" height="486" */}
             </div>
         </div>
