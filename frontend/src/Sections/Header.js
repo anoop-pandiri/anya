@@ -26,12 +26,11 @@ const Header = () => {
     <div>
       <Navbar style={mystyle}>
           <Navbar.Brand href="/">
-            <img src={"./images/Anya.png"} alt="Anya" width="50" height="55"/>
+            <img src={"../images/Anya.png"} alt="Anya" width="50" height="55"/>
           </Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/" style={navLinks}>Home</Nav.Link>
             <Nav.Link href="/animeDetails" style={navLinks}>Anime Details</Nav.Link>
-            <Nav.Link href="/EpisodeView" style={navLinks}>Episode View</Nav.Link>
           </Nav>
       </Navbar>
     </div>

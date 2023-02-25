@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import './EpisodeView.css';
 
 function EpisodeView({anime}) {
 
-    let location = useLocation();;
-    let animeWatchLink = `https://www2.kickassanime.ro/api/watch/${location.state.slug}`;
+    let {slug}= useParams();
+
+    let animeWatchLink = `https://www2.kickassanime.ro/api/watch/${slug}`;
    
     const [animeWatch, setAnimeWatch] = useState([
       {"anime_id":"",

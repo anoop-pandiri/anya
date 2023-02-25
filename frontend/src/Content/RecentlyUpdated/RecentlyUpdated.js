@@ -48,10 +48,7 @@ const RecentlyUpdated = () => {
 
   const navigate = useNavigate();
   const handleEpisodeView = (anime) => {
-    navigate('/EpisodeView',{
-      state: {slug: anime.slug}
-    });
-
+    navigate(`/watch/${anime.slug}`);
   };
 
 

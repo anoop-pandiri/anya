@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/animeDetails" element={<AnimeDetails/>}/>
-        <Route path="/EpisodeView" element={<EpisodeView/>}/>
+        <Route path="/watch/:slug" element={<EpisodeView/>}/>
       </Routes>
     </BrowserRouter>
     </div>
