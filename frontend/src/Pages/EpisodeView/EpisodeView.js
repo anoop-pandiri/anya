@@ -53,9 +53,8 @@ function EpisodeView({anime}) {
         setAnimeWatch(finalData);
       });
   
-    }, []);
+    },[]);
 
-  
     function ambientMode() {
       var btn = document.getElementById("btnAmbient");
       var video = document.getElementById("player");
@@ -85,26 +84,36 @@ function EpisodeView({anime}) {
     
     return (
         <div id='container'>
-        <div className='episode-container'>
-            <div className='video-container'>
-            <canvas id="canvas"></canvas>
-                {/* <video id="player" width="400" height="200" controls src=""> Browser not supported </video> */}
-                <iframe id='player' title="episode" allowFullScreen src={animeWatch.name!==""?animeWatch.servers:""} ></iframe>
-                {/* width="864" height="486" */}
-            </div>
-        </div>
-        <div className='toolbar'>
-            <button type="button" id="btnAmbient" onClick={ambientMode} style={{padding:"1%", align:'center'}}>Ambient Mode : OFF</button>
-        </div>
+          <div className='episode-container'>
 
-        <div className='title-container'>
-        <h2>{animeWatch.title}</h2>
-        <h5>Episode {animeWatch.episodeNumber} - {animeWatch.name}</h5>
+            <div className='video-container'>
+                {animeWatch.thumbnail && <img id='thumbnail' src={`https://www2.kickassanime.ro/images/thumbnail/${animeWatch.thumbnail.hq.name}.webp`} alt="poster" />}
+
+                <div className="lds-ripple">
+                  <div></div>
+                  <div></div>
+                </div>
+
+                <canvas id="canvas">
+                </canvas>
+                <iframe id='player' title="episode" allowFullScreen src={animeWatch.name!==""?animeWatch.servers:""} >
+                </iframe>
                 
-        </div>
-        <div className='metadata-container'>
-        <p>Genres: Action,Comedy</p>
-        </div>
+            </div>
+          </div>
+     
+          <div className='toolbar'>
+            <button type="button" id="btnAmbient" onClick={ambientMode} style={{padding:"1%", align:'center'}}>Ambient Mode : OFF</button>
+          </div>
+
+          <div className='title-container'>
+            <h2>{animeWatch.title}</h2>
+            <h5>Episode {animeWatch.episodeNumber} - {animeWatch.name}</h5>
+                
+          </div>
+          <div className='metadata-container'>
+            <p>Genres: Action,Comedy</p>
+          </div>
         </div>         
     );
 };
