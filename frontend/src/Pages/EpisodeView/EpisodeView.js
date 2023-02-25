@@ -38,6 +38,7 @@ function EpisodeView({anime}) {
       "episodeNavigation":{"prev":"","next":""},
       "servers":[""]
       }
+      
     ]);
 
     
@@ -83,7 +84,9 @@ function EpisodeView({anime}) {
         
     }
     
+    
     return (
+      
         <div id='container'>
           <div className='episode-container'>
 
@@ -113,10 +116,22 @@ function EpisodeView({anime}) {
                 
           </div>
           <div className='metadata-container'>
-            <p>Genres: Action,Comedy</p>
+            <p>Duration : {animeWatch.duration}</p>
+            <p>Year : {animeWatch.year}</p>
+            <p>Premiered : {animeWatch.premiered}</p>
+            <p>Language : {animeWatch.lang==="ja-JP" && <>Japanese</>}</p>
+            <p>Synopsis : {animeWatch.description}</p>
+            
+            <p>Genres : {animeWatch.genres}</p>
+            <p>Rating : {animeWatch.maturityRatings}</p>
+            <p>
+              {animeWatch.isMature===false && <p>Suitable for All ages</p>}
+              {animeWatch.isMature===true && <p>Suitable for Adults</p>}
+            </p>
           </div>
         </div>         
     );
 };
+
 
 export default EpisodeView;
