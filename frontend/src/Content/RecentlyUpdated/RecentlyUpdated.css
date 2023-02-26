@@ -1,124 +1,121 @@
-.recently-updated{
-    min-height: 100vh;
-    height: auto;
-    color: white;
-    font-family: 'Roboto', sans-serif;
+.recently-updated {
+  min-height: 100vh;
+  height: auto;
+  color: white;
+  font-family: 'Roboto', sans-serif;
     
 }
   
-  .recently-updated h1{
-    font-size: 2rem;
-    text-align: left;
-    margin-bottom: 20px;
-    padding-top: 10px;
-  }
+.recently-updated h1 {
+  font-size: 2rem;
+  text-align: left;
+  margin-bottom: 20px;
+  padding-top: 10px;
+}
     
-  .recently-updated-list .card{
-    background: #1A1A1D;
-    color: white;
-    border: solid transparent;
-    transition: 0.3s;
-  }
+.recently-updated-list .card {
+  background: #1A1A1D;
+  color: white;
+  border: solid transparent;
+  transition: 0.3s;
+}
   
-  .recently-updated-list .card:hover{
-    background: #2B2B2F;
-    border: solid #2B2B2F;
-    z-index: 1;
-
-  }
-
-
-  .card-text{
-    display: flex;
-    justify-content: space-between;
-    flex-flow: row wrap;
-  }
-
-  .card-text>span:nth-child(1){
-    padding: 0 10px 0 0;
-  }
-
-  .card-title{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 100%;
-    white-space: nowrap;
-    font-size: 1rem !important;
-    margin-top: 10px !important;
-    margin-bottom: 0px !important;
-  }
+.recently-updated-list .card:hover {
+  background: #2B2B2F;
+  border: solid #2B2B2F;
+  z-index: 1;
+}
 
 
+.card-text {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+}
+
+.card-text>span:nth-child(1) {
+  padding: 0 10px 0 0;
+}
+
+.card-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  white-space: nowrap;
+  font-size: 1rem !important;
+  margin-top: 10px !important;
+  margin-bottom: 0px !important;
+}
 
 .arrow {
-    transform: rotate(90deg);
-    cursor: pointer;
-    margin-right: 7%;
+  transform: rotate(90deg);
+  cursor: pointer;
+  margin-right: 7%;
 }
 
-.next{
-    display: block;
-    width: 1.3rem;
-    height: 1.3rem;
-    border-bottom: 5px solid white;
-    border-right: 5px solid white;
-    transform: rotate(-135deg);
-    animation: animateNext 2s infinite;
+.next {
+  display: block;
+  width: 1.3rem;
+  height: 1.3rem;
+  border-bottom: 5px solid white;
+  border-right: 5px solid white;
+  transform: rotate(-135deg);
+  animation: animateNext 2s infinite;
 }
 
 .nextFixed {
-    display: block;
-    width: 1.3rem;
-    height: 1.3rem;
-    border-bottom: 5px solid white;
-    border-right: 5px solid white;
-    transform: rotate(-135deg);
+  display: block;
+  width: 1.3rem;
+  height: 1.3rem;
+  border-bottom: 5px solid white;
+  border-right: 5px solid white;
+  transform: rotate(-135deg);
 }
 
 .prev {
-    display: block;
-    width: 1.3rem;
-    height: 1.3rem;
-    border-bottom: 5px solid white;
-    border-right: 5px solid white;
-    transform: rotate(45deg);
-    animation: animatePrev 2s infinite;
+  display: block;
+  width: 1.3rem;
+  height: 1.3rem;
+  border-bottom: 5px solid white;
+  border-right: 5px solid white;
+  transform: rotate(45deg);
+  animation: animatePrev 2s infinite;
 }
 .prevFixed {
-    display: block;
-    width: 1.3rem;
-    height: 1.3rem;
-    border-bottom: 5px solid white;
-    border-right: 5px solid white;
-    transform: rotate(45deg);
+  display: block;
+  width: 1.3rem;
+  height: 1.3rem;
+  border-bottom: 5px solid white;
+  border-right: 5px solid white;
+  transform: rotate(45deg);
 }
 
 
 
 @keyframes animateNext {
-    0% {
-        opacity: 0;
-        transform: rotate(-135deg) translate(-10px, -10px);
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        transform: rotate(-135deg) translate(-8px, -8px);
-    }
+  0% {
+    opacity: 0;
+    transform: rotate(-135deg) translate(-10px, -10px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(-135deg) translate(-8px, -8px);
+  }
 }
 
 @keyframes animatePrev {
-    0% {
-        opacity: 0;
-        transform: rotate(45deg) translate(-10px, -10px);
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        transform: rotate(45deg) translate(-8px, -8px);
-    }
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-10px, -10px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-8px, -8px);
+  }
 }
