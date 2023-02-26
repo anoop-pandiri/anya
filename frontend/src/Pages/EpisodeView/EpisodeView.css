@@ -34,11 +34,53 @@
     color: rgb(255, 255, 255);
 }
 
+#details {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  background-color:rgb(46, 46, 46);
+}
+
+#poster {
+  position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    padding-left: 4%;
+}
+
+#synopsis {
+  margin-top: 1%;
+  padding: 2%;
+  color: rgb(255, 255, 255);
+}
+
 .metadata-container {
-    margin-top: 1%;
-    padding: 2%;
-    background-color:rgb(46, 46, 46);
-    color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+  padding: 10px;
+}
+.grid-container {
+  display: grid;
+  row-gap: 50px;
+  column-gap: 50px;
+  grid-template-columns: auto auto auto;
+  padding-left: 3%;
+
+  min-width: 0;
+  min-height: 0;
+  overflow:scroll;
+}
+
+.mbox {
+  background-color:rgb(46, 46, 46);
+}
+
+.mkey {
+  color: rgb(255, 79, 108);
+  font-weight: bold;
+}
+
+.mval {
+  color: rgb(249, 201, 58);
+  font-weight: 1;
 }
 
 #canvas{
@@ -75,9 +117,6 @@ button {
     display: inline-block;
     font-size: 16px;
 }
-
-
-
 
 
 .lds-ripple {

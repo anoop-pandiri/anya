@@ -111,30 +111,29 @@ function EpisodeView({anime}) {
           </div>
 
           <div className='title-container'>
-            <h2>{animeWatch.title}</h2>
-            <h5>Episode {animeWatch.episodeNumber} - {animeWatch.name}</h5>
-                
+            <h2>{animeWatch.title} (Episode {animeWatch.episodeNumber} - {animeWatch.name})</h2>
           </div>
-          <div className='metadata-container'>
-            <p>Duration : {animeWatch.duration}</p>
-            <p>Year : {animeWatch.year}</p>
-            <p>Premiered : {animeWatch.premiered}</p>
-            <p>Synopsis : {animeWatch.description}</p>
-            
-            
-            <div style={{display:'flex'}}>
-            <p style={{paddingRight:'5px'}}>Genre :</p>
-            { animeWatch.genres &&
-              animeWatch.genres.map((genre, index) => {
-                  return <p style={{paddingRight:'5px'}}>{genre}</p>
-              })
-            }
-            </div>
+          <div id='details'>
+          <div>
+          {animeWatch.thumbnail && <img id='poster' src={`https://www2.kickassanime.ro/images/thumbnail/${animeWatch.thumbnail.hq.name}.webp`} alt="poster"/>}
+          </div>
 
-            <p>Rating : {animeWatch.maturityRatings}</p>
+          <div className='metadata-container'>
+          <div id='synopsis'><h4>Synopsis :</h4> <p>{animeWatch.description}</p></div>
+          <h3>General Information</h3>
+          <div className='grid-container'>
+            <div className='mbox'><div className='mkey'>Duration</div><div className='mval'> {animeWatch.duration}</div></div>
+            <div className='mbox'><div className='mkey'>Year</div><div className='mval'>{animeWatch.year}</div></div>
+            <div className='mbox'><div className='mkey'>Premiered</div><div className='mval'>{animeWatch.premiered}</div></div>
+            
+            <div className='mbox'><div className='mkey'>Genre</div><div className='mval'>{animeWatch.genres}</div></div>
+
+            <div className='mbox'><div className='mkey'>Rating</div><div className='mval'>{animeWatch.maturityRatings}</div></div>
            
           </div>
-        </div>         
+          </div>
+        </div>
+        </div>        
     );
 };
 
