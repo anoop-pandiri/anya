@@ -119,15 +119,20 @@ function EpisodeView({anime}) {
             <p>Duration : {animeWatch.duration}</p>
             <p>Year : {animeWatch.year}</p>
             <p>Premiered : {animeWatch.premiered}</p>
-            <p>Language : {animeWatch.lang==="ja-JP" && <>Japanese</>}</p>
             <p>Synopsis : {animeWatch.description}</p>
             
-            <p>Genres : {animeWatch.genres}</p>
+            
+            <div style={{display:'flex'}}>
+            <p style={{paddingRight:'5px'}}>Genre :</p>
+            { animeWatch.genres &&
+              animeWatch.genres.map((genre, index) => {
+                  return <p style={{paddingRight:'5px'}}>{genre}</p>
+              })
+            }
+            </div>
+
             <p>Rating : {animeWatch.maturityRatings}</p>
-            <p>
-              {animeWatch.isMature===false && <p>Suitable for All ages</p>}
-              {animeWatch.isMature===true && <p>Suitable for Adults</p>}
-            </p>
+           
           </div>
         </div>         
     );

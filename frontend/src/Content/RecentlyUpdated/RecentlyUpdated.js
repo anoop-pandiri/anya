@@ -77,7 +77,8 @@ const RecentlyUpdated = () => {
                 </Card.Body>
               </Card>
             </Col>
-            ))}
+            ))
+          }
           </Row>
         </div>
     </div>

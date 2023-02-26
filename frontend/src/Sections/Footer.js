@@ -14,7 +14,8 @@ const mystyle = {
 const Footer = () => {
   return (
     <footer style={mystyle}>
-        <p>© 2023 All rights reserved by ANYA</p>
+      <span>This site does not store any content on it's server. All contents are provided by non-affiliated third parties</span>
+      <p>© 2023 All rights reserved by ANYA</p>
     </footer>
   );
 };
