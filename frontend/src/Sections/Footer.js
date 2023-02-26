@@ -5,10 +5,9 @@ const mystyle = {
   bottom: 0,
   width:"100%",
   background:"black",
-  color:"grey",
-  padding:"2%",
+  color:"rgb(249, 201, 58)",
+  padding:"20px",
   textAlign : "center",
-  
 };
 
 const Footer = () => {

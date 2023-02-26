@@ -8,6 +8,7 @@ const RecentlyUpdated = () => {
   let perPage=18;
   const [pageValue, setPageValue] = useState(0);
   const [length, setLength] = useState(0);
+  const [episodeType, setEpisodeType] = useState("all");
 
   const [recentAnime, setRecentAnime] = useState([
     {"isSimulcast":false,
@@ -32,7 +33,7 @@ const RecentlyUpdated = () => {
     "updatedString":""
     }
   ]);
-  var recentlyUpdatedLink = `https://www2.kickassanime.ro/api/recent_update?episodeType=all&page=${pageValue}&perPage=${perPage}`;
+  var recentlyUpdatedLink = `https://www2.kickassanime.ro/api/recent_update?episodeType=${episodeType}&page=${pageValue}&perPage=${perPage}`;
 
   useEffect(() => {
     
@@ -49,7 +50,7 @@ const RecentlyUpdated = () => {
       setLength(finalData.length);
     });
 
-  }, [pageValue]);
+  }, [pageValue, episodeType]);
 
   const navigate = useNavigate();
   const handleEpisodeView = (anime) => {
@@ -64,12 +65,18 @@ const RecentlyUpdated = () => {
     setPageValue(pageValue+1);
   };
 
+  const videoType = (type) => {
+    setEpisodeType(type);
+    setPageValue(0);
+  };
+
   return (
     <div className="recently-updated">
 
         <div style={{display:'flex', justifyContent:'space-between'}}>
           <h1>Recently Updated</h1>
-          <div className="arrow">
+          
+          <div className="arrow" style={{marginRight: "7%"}}>
             { length===perPage?
               <>
                 <span className="next" onClick={next}></span>
@@ -87,11 +94,26 @@ const RecentlyUpdated = () => {
           </div>
         </div>
 
+        <div className="multi-button">
+          <button className="btn__text" onClick={()=>videoType("all")}><span>All</span></button>
+          <button className="btn__text" onClick={()=>videoType("sub")}><span>Sub</span></button>
+          <button className="btn__text" onClick={()=>videoType("dub")}><span>Dub</span></button>
+        </div>
+
         <div className="recently-updated-list">
           <Row>
           {recentAnime.map((anime, idx) => (
             <Col xs={6} sm={4} md={3} lg={2} key={idx}>
-              <Card loading="lazy" onClick={()=>handleEpisodeView(anime)}>
+              { anime.isSubbed?
+                <span className="videoType" style={{zIndex:1, position:'absolute'}}>Sub</span>
+                :""
+              }
+              { anime.isDubbed?
+                <span className="videoType" style={{zIndex:1, position:'absolute'}}>Dub</span>
+                :""
+              }
+
+              <Card onClick={()=>handleEpisodeView(anime)}>
                 <Card.Img  variant="top" src={anime.poster.hq.name!=="anime-hq"?`https://www2.kickassanime.ro/images/poster/${anime.poster.hq.name}.${anime.poster.hq.formats[1]}`:""} />
                 <Card.Title>{anime.title}</Card.Title>
                 <Card.Body style={{padding:"0.5em 0", }}>                 
@@ -110,7 +132,7 @@ const RecentlyUpdated = () => {
           }
           </Row>
         </div>
-        <div style={{display:'flex', justifyContent:'end'}}>
+        <div style={{display:'flex', justifyContent:'center', padding:'20px 0 20px 0'}}>
           <div className="arrow">
             { length===perPage?
               <>

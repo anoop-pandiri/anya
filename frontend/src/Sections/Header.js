@@ -15,10 +15,11 @@ const mystyle = {
 };
 
 const navLinks = {
-  color: "white",
+  color: "rgb(249, 201, 58)",
   textAlign: "center",
+  fontweight: "bold !important",
   padding: "0px 10px",
-  height: "20px",
+  fontSize: "20px",
 };
 
 const Header = () => {

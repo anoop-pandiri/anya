@@ -91,7 +91,7 @@ function EpisodeView({anime}) {
           <div className='episode-container'>
 
             <div className='video-container'>
-                {animeWatch.thumbnail && <img id='thumbnail' src={`https://www2.kickassanime.ro/images/thumbnail/${animeWatch.thumbnail.hq.name}.webp`} alt="poster" />}
+                {animeWatch.thumbnail && <img id='thumbnail' src={`https://www2.kickassanime.ro/images/thumbnail/${animeWatch.thumbnail.hq.name}.webp`} alt="thumbnail" />}
 
                 <div className="lds-ripple">
                   <div></div>
@@ -115,7 +115,7 @@ function EpisodeView({anime}) {
           </div>
           <div id='details'>
           <div>
-          {animeWatch.thumbnail && <img id='poster' src={`https://www2.kickassanime.ro/images/thumbnail/${animeWatch.thumbnail.hq.name}.webp`} alt="poster"/>}
+          {animeWatch.poster && <img id='poster' src={`https://www2.kickassanime.ro/images/poster/${animeWatch.poster.hq.name}.webp`} alt="poster"/>}
           </div>
 
           <div className='metadata-container'>
