@@ -227,11 +227,23 @@ function EpisodeView({anime}) {
                 </iframe>
                 
             </div>
+            <div className='toolbar'style={{display:'flex', justifyContent:"space-around", marginTop:"2%"}}>
+
+              { animeWatch.episodeNavigation &&       
+                animeWatch.episodeNavigation.next!==undefined ? <button class="button-75" onClick={()=>handleSeasonEpisode(animeWatch.episodeNavigation.next)}><span class="text">Next</span></button>:
+                ""
+              } 
+              
+              <button class="button-75" id="btnAmbient" onClick={ambientMode} ><span class="text">Ambient Mode : OFF</span></button>
+                
+              { animeWatch.episodeNavigation &&
+                animeWatch.episodeNavigation.prev!==undefined ? <button class="button-75" onClick={()=>handleSeasonEpisode(animeWatch.episodeNavigation.prev)}><span class="text">Prev</span></button>:
+                ""
+              }
+            </div>
           </div>
      
-          <div className='toolbar'>
-            <button type="button" id="btnAmbient" onClick={ambientMode} style={{padding:"1%", align:'center'}}>Ambient Mode : OFF</button>
-          </div>
+
 
           <div>
             <div className='episodes-container' style={{display:'flex', justifyContent:'space-around', flexShrink:'1'}}>
