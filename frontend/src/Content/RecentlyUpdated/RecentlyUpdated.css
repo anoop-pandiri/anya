@@ -26,7 +26,6 @@
   }
   .recently-updated-list .card:hover{
     background: rgb(52, 44, 45);
-    /* border: solid rgb(69, 43, 47); */
     box-shadow: 0 0 10px 10px rgb(69, 43, 47);
     z-index: 1;
 
@@ -115,7 +114,7 @@
   }
   100% {
     opacity: 0;
-    transform: rotate(45deg) translate(-9px, -px);
+    transform: rotate(45deg) translate(-9px, -9px);
   }
 }
 
