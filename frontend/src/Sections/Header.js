@@ -15,7 +15,7 @@ const mystyle = {
 };
 
 const navLinks = {
-  color: "rgb(249, 201, 58)",
+  color: "rgb(255, 79, 108)",
   textAlign: "center",
   fontweight: "bold !important",
   padding: "0px 10px",

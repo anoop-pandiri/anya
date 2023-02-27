@@ -114,9 +114,9 @@ const RecentlyUpdated = () => {
               }
 
               <Card onClick={()=>handleEpisodeView(anime)}>
-                <Card.Img  variant="top" src={anime.poster.hq.name!=="anime-hq"?`https://www2.kickassanime.ro/images/poster/${anime.poster.hq.name}.${anime.poster.hq.formats[1]}`:""} />
+                <Card.Img  variant="top" src={anime.poster.hq.name!=="anime-hq"?`https://www2.kickassanime.ro/images/poster/${anime.poster.sm.name}.${anime.poster.sm.formats[1]}`:""} />
                 <Card.Title>{anime.title}</Card.Title>
-                <Card.Body style={{padding:"0.5em 0", }}>                 
+                <Card.Body style={{padding:"0.5em 0"}}>                 
                   <Card.Text>
                     <span>
                       {anime.episodeNumber===0?"":"Episode " + anime.episodeNumber}

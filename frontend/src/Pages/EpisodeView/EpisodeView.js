@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './EpisodeView.css';
 import Form from 'react-bootstrap/Form';
+import { Card, Row, Col} from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+
 
 function EpisodeView({anime}) {
 
@@ -108,7 +111,7 @@ function EpisodeView({anime}) {
       fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(animeWatchLink)}&nocache=${Date.now()}`)
       .then(response => {
        if (response.ok) {
-        return response.json()
+        return response.json();
       }
         throw new Error('Network response was not ok.')
       })
@@ -122,7 +125,7 @@ function EpisodeView({anime}) {
         fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(seasonsLink)}&nocache=${Date.now()}`)
         .then(response => {
           if (response.ok) {
-            return response.json()
+            return response.json();
           }
             throw new Error('Network response was not ok.')
         })
@@ -149,7 +152,7 @@ function EpisodeView({anime}) {
       fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(seasonEpisodesList)}&nocache=${Date.now()}`)
       .then(response => {
         if (response.ok) {
-          return response.json()
+          return response.json();
         }
           throw new Error('Network response was not ok.')
       })
@@ -158,8 +161,6 @@ function EpisodeView({anime}) {
         setSeasonEpisodes(seasonEpisodesData);
       });
     },[seasonId, languageId]);
-
-    console.log(seasonEpisodes);
 
 
     function ambientMode() {
@@ -189,13 +190,18 @@ function EpisodeView({anime}) {
         
     }
     
+    const navigate = useNavigate();
+    const handleSeasonEpisode = (slug) => {
+      navigate(`/watch/${slug}`);
+      window.location.reload(true);
+    };
     
     return (
         <div id='container'>
           <div className='episode-container'>
 
             <div className='video-container'>
-                {animeWatch.thumbnail && <img id='thumbnail' src={`https://www2.kickassanime.ro/images/thumbnail/${animeWatch.thumbnail.hq.name}.webp`} alt="thumbnail" />}
+                {animeWatch.thumbnail && <img id='thumbnail' src={`https://www2.kickassanime.ro/images/thumbnail/${animeWatch.thumbnail.hq.name}.webp`} alt="" />}
 
                 <div className="lds-ripple">
                   <div></div>
@@ -215,29 +221,54 @@ function EpisodeView({anime}) {
           </div>
 
           <div>
-            <h3 style={{color:'white'}}>Episodes</h3>
-            <div className='episodes-container' style={{display:'flex'}}>
+            <div className='episodes-container' style={{display:'flex', justifyContent:'space-around', flexShrink:'1'}}>
               <div className='season'>
-                <Form.Select onChange={e=>selectSeason(e.target.value)} value={seasonId}>
+                <Form.Select className='seasonSelect' onChange={e=>selectSeason(e.target.value)} value={seasonId}>
                   { 
                     seasons.map((season,idx) => {
-                      return <option key={idx} value={season.id}>[S{season.number}]{season.title}</option>
+                      return <option key={idx} className='seasonOption' style={{backgroundColor:'transparent'}} value={season.id}>[S{season.number}]{season.title}</option>
                     })
                   }
                 </Form.Select>
               </div>
               <div className='language'>
-                <Form.Select onChange={e=>selectLanguage(e.target.value)} value={languageId}>
+                <Form.Select className='languageSelect' onChange={e=>selectLanguage(e.target.value)} value={languageId}>
                   { selectedSeason.languages &&
                     selectedSeason.languages.map((language,idx) => {
-                      return <option key={idx} value={language}>{languageNames.of(language)}</option>
+                      return <option key={idx} className='languageOption' value={language}>{languageNames.of(language)}</option>
                     })
                   }
                 </Form.Select>
               </div>
             </div>
-            <div className='episodesList'>
+            <h3 style={{color:'rgb(249, 201, 58)'}}>Episodes</h3>
 
+            <div className='episodesList'>
+                  <Row>
+                    { seasonEpisodes.result &&
+                      seasonEpisodes.result.map((episode, idx) => (
+
+                      <Col xs={6} sm={4} md={3} lg={2} key={idx}>
+                        {episode.episodeNumber===animeWatch.episodeNumber ? 
+                          <p className='playingNow' style={{position:'absolute',zIndex:1}}>
+                            Playing Now
+                          </p> 
+                          : ""
+                        }
+                        <Card onClick={()=>handleSeasonEpisode(episode.slug)}>
+                          <Card.Img  variant="top" src={episode.thumbnail && episode.thumbnail.hq.name!=="anime-hq"?`https://www2.kickassanime.ro/images/thumbnail/${episode.thumbnail.hq.name}.webp`:""} />
+                          <Card.Title>EP.{episode.episodeNumber}</Card.Title>
+                          <Card.Body style={{padding:"0.5em 0"}}>                 
+                            <Card.Text>
+                          
+                            </Card.Text>
+                          </Card.Body>
+                        </Card>
+                      </Col>
+                      
+                     ))
+                    }
+                  </Row>
             </div>
           </div>
 
@@ -246,7 +277,7 @@ function EpisodeView({anime}) {
           </div>
           <div id='details'>
             <div>
-              {animeWatch.poster && <img id='poster' src={`https://www2.kickassanime.ro/images/poster/${animeWatch.poster.hq.name}.webp`} alt="poster"/>}
+              {animeWatch.poster && <img id='poster' src={`https://www2.kickassanime.ro/images/poster/${animeWatch.poster.sm.name}.webp`} alt="poster"/>}
             </div>
 
             <div className='metadata-container'>

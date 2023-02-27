@@ -4,7 +4,7 @@
   padding-right: 20%;
   padding-top: 1%;
   padding-bottom: 1%;
-
+  
 }
 
 .video-container {
@@ -23,34 +23,42 @@
 
 .toolbar {
   width: 100%;
-  background-color:rgb(46, 46, 46);
+  background-color:#1a1a1d;
   text-align: center;
 }
 
 .title-container {
-  margin-top: 1%;
   padding: 2%;
   background-color:rgb(46, 46, 46);
-  color: rgb(255, 255, 255);
+  color: rgb(249, 201, 58);
 }
 
 #details {
   display: flex;
   background-color:rgb(46, 46, 46);
+  margin-bottom: 10px;
+  padding-bottom: 2%;
 }
 
 #poster {
   max-width: 70%;
-  max-height: 70%;
   padding-left: 10%;
+  padding-bottom: 5%;
 }
 
 #synopsis, #generalInfo {
   padding: 1%;
-  color: rgb(255, 255, 255);
 }
 
-
+#synopsis h4 {
+  color: rgb(249, 201, 58);
+}
+#synopsis p {
+  color:rgb(255, 79, 108);
+}
+#generalInfo h4 {
+  color: rgb(249, 201, 58);
+}
 
 .metadata-container {
   color: rgb(255, 255, 255);
@@ -71,13 +79,13 @@
 }
 
 .mkey {
-  color: rgb(255, 79, 108);
+  color: rgb(249, 201, 58);
   font-weight: bold;
 }
 
 .mval {
-  color: rgb(249, 201, 58);
-  font-weight: 1;
+  color: rgb(255, 79, 108);
+  font-weight: 500;
 }
 
 #canvas {
@@ -158,4 +166,55 @@ button {
     height: 72px;
     opacity: 0;
   }
+}
+
+
+
+.episodesList {
+  padding-top: 1%;
+}
+.episodesList .card{
+  cursor: pointer;
+  background: #1A1A1D;
+  font-weight: 600;
+  color: rgb(255, 79, 108);
+  border: solid transparent;
+  transition: 0.3s;
+}
+.episodesList .card-title{
+  padding-left: 5px;
+  padding-top: 5px;
+}
+
+.season, .seasonOption, .seasonSelect,.language, .languageOption, .languageSelect {
+  background-color: #1a1a1d !important;
+  color: rgb(249, 201, 58) !important;
+}
+
+
+.season, .language {
+  flex-grow: 1;
+  max-width: 500px;
+}
+
+.episodes-container{
+  padding-top: 1.5%;
+  padding-bottom: 1%;
+}
+
+
+.playingNow {
+  background: rgb(249, 201, 58);
+  color: #282c34;
+  border: 2px solid rgb(255, 79, 108);
+  border-radius: 10px !important;
+  height: 28px !important;
+  font-size: 16px;
+  padding: auto;
+  font-weight: 800;
+  width: 120px;
+  text-align: center;
+  margin-top: 5px;
+  margin-left: 5px;
+  
 }
