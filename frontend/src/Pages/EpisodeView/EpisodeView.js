@@ -82,6 +82,10 @@ function EpisodeView({anime}) {
       setLanguageId(value);
     };
 
+    const [limit, setLimit] = useState(1);
+    const [limitCount, setLimitCount] = useState(1);
+
+
     const [seasonEpisodes, setSeasonEpisodes] = useState([
       {"limit":1,
       "result":[
@@ -104,7 +108,7 @@ function EpisodeView({anime}) {
     ]);
 
 
-    let seasonEpisodesList = `https://www2.kickassanime.ro/api/episodes/${seasonId}?lh=${languageId}&page=1`;
+    let seasonEpisodesList = `https://www2.kickassanime.ro/api/episodes/${seasonId}?lh=${languageId}&page=${limitCount}}`;
 
     
     useEffect(() => {
@@ -159,8 +163,9 @@ function EpisodeView({anime}) {
       .then(data => {
         var seasonEpisodesData = JSON.parse(data.contents);
         setSeasonEpisodes(seasonEpisodesData);
+        setLimit(seasonEpisodesData.limit);
       });
-    },[seasonId, languageId]);
+    },[seasonId, languageId, limitCount]);
 
 
     function ambientMode() {
@@ -194,6 +199,14 @@ function EpisodeView({anime}) {
     const handleSeasonEpisode = (slug) => {
       navigate(`/watch/${slug}`);
       window.location.reload(true);
+    };
+
+    const prevLimit = () => {
+      setLimitCount(limitCount-1);
+    };
+  
+    const nextLimit = () => {
+      setLimitCount(limitCount+1);
     };
     
     return (
@@ -241,7 +254,20 @@ function EpisodeView({anime}) {
                 </Form.Select>
               </div>
             </div>
-            <h3 style={{color:'rgb(249, 201, 58)'}}>Episodes</h3>
+            <h3 style={{color:'rgb(249, 201, 58)', position:'absolute' }}>Episodes</h3>
+            
+            <div style={{display:'flex', justifyContent:'center', paddingTop:'1%'}}>
+              <div className="arrow">
+                { limitCount<limit?
+                    <span className="nextFixed" onClick={nextLimit}></span>
+                  :""
+                }
+                { limitCount>1?
+                    <span className="prevFixed" onClick={prevLimit}></span>
+                  :""
+                }       
+              </div>
+            </div>
 
             <div className='episodesList'>
                   <Row>
@@ -256,7 +282,7 @@ function EpisodeView({anime}) {
                           : ""
                         }
                         <Card onClick={()=>handleSeasonEpisode(episode.slug)}>
-                          <Card.Img  variant="top" src={episode.thumbnail && episode.thumbnail.hq.name!=="anime-hq"?`https://www2.kickassanime.ro/images/thumbnail/${episode.thumbnail.hq.name}.webp`:""} />
+                          <Card.Img  variant="top" src={episode.thumbnail && episode.thumbnail.sm.name!=="anime-sm"?`https://www2.kickassanime.ro/images/thumbnail/${episode.thumbnail.sm.name}.webp`:""} />
                           <Card.Title>EP.{episode.episodeNumber}</Card.Title>
                           <Card.Body style={{padding:"0.5em 0"}}>                 
                             <Card.Text>
@@ -272,12 +298,25 @@ function EpisodeView({anime}) {
             </div>
           </div>
 
+          <div style={{display:'flex', justifyContent:'center', marginBottom:'1%'}}>
+              <div className="arrow">
+                { limitCount<limit?
+                    <span className="nextFixed" onClick={nextLimit}></span>
+                  :""
+                }
+                { limitCount>1?
+                    <span className="prevFixed" onClick={prevLimit}></span>
+                  :""
+                }       
+              </div>
+            </div>
+
           <div className='title-container'>
             <h2>{animeWatch.title} (Episode {animeWatch.episodeNumber} - {animeWatch.name})</h2>
           </div>
           <div id='details'>
             <div>
-              {animeWatch.poster && <img id='poster' src={`https://www2.kickassanime.ro/images/poster/${animeWatch.poster.sm.name}.webp`} alt="poster"/>}
+              {animeWatch.poster && <img id='poster' src={`https://www2.kickassanime.ro/images/poster/${animeWatch.poster.hq.name}.webp`} alt="poster"/>}
             </div>
 
             <div className='metadata-container'>
