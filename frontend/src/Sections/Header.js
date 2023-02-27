@@ -41,7 +41,7 @@ const Header = () => {
           </Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/" style={navLinks}>Home</Nav.Link>
-            <Nav.Link href="/animeDetails" style={navLinks}>Anime Details</Nav.Link>
+            <Nav.Link href="/animeDetails" style={navLinks}>All Anime</Nav.Link>
             <Form >
               <Form.Control style={{width: '250px'}}
                 type="search"
